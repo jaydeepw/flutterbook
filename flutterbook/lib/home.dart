@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterbook/insta_body.dart';
+import 'package:flutterbook/body.dart';
 
-class InstaHome extends StatelessWidget {
+class Home extends StatelessWidget {
+
   final topBar = new AppBar(
     backgroundColor: new Color(0xfff8faf8),
     centerTitle: true,
@@ -9,7 +10,7 @@ class InstaHome extends StatelessWidget {
     leading: new Icon(Icons.camera_alt),
     title: SizedBox(
         // height: 35.0, child: Image.asset("assets/images/insta_logo.png")),
-        height: 35.0, child: new Text("Custom title", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black45))),
+        height: 35.0, child: new Text("FlutterBook", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black45))),
     actions: <Widget>[
       Padding(
         padding: const EdgeInsets.only(right: 12.0),
@@ -22,7 +23,7 @@ class InstaHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: topBar,
-        body: new InstaBody(),
+        body: new Body(),
         bottomNavigationBar: new Container(
           color: Colors.white,
           height: 50.0,
