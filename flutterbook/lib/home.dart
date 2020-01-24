@@ -5,18 +5,10 @@ class Home extends StatelessWidget {
 
   final topBar = new AppBar(
     backgroundColor: new Color(0xfff8faf8),
-    centerTitle: true,
+    centerTitle: false,
     elevation: 1.0,
-    leading: new Icon(Icons.camera_alt),
     title: SizedBox(
-        // height: 35.0, child: Image.asset("assets/images/insta_logo.png")),
-        height: 35.0, child: new Text("FlutterBook", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black45))),
-    actions: <Widget>[
-      Padding(
-        padding: const EdgeInsets.only(right: 12.0),
-        child: Icon(Icons.send),
-      )
-    ],
+      child: new Text("FlutterBook", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black45))),
   );
 
   @override

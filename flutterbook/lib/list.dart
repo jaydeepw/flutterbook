@@ -1,16 +1,24 @@
+import 'package:flutter/cupertino.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class HomeList extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    var list = new List.of([
+    /*var list = new List.of([
       "https://www.howtogeek.com/wp-content/uploads/2019/09/04c.gif",
       "https://66.media.tumblr.com/ea6e5c19f89b4e279f2f20a4bb31bb42/tumblr_nfakifdir61twkrf5o1_1280.gif",
       "https://creativepool.com/files/candidate/portfolio/full/1607338.gif",
       "https://images-platform.99static.com/Xpj8jc_-csjIh9OIQCk7OqGDLfQ=/0x0:1080x1080/fit-in/900x675/99designs-contests-attachments/97/97958/attachment_97958792",
       "https://www.howtogeek.com/wp-content/uploads/2019/09/04c.gif"
+    ]);*/
+
+    var list = new List.of([
+      "https://media.gettyimages.com/photos/closeup-portrait-of-siberian-husky-relaxing-on-grassy-field-picture-id595607339?s=2048x2048",
+      "https://media.gettyimages.com/photos/closeup-portrait-of-siberian-husky-relaxing-on-grassy-field-picture-id595607339?s=2048x2048",
+      "https://media.gettyimages.com/photos/closeup-portrait-of-siberian-husky-relaxing-on-grassy-field-picture-id595607339?s=2048x2048",
+      "https://media.gettyimages.com/photos/closeup-portrait-of-siberian-husky-relaxing-on-grassy-field-picture-id595607339?s=2048x2048"
     ]);
 
     var listOfDescription = new List.of([
@@ -24,72 +32,117 @@ class HomeList extends StatelessWidget {
     var title = new List.of([
       "This is a short title",
       "This is a long title",
-      "Elon Must invests stuff",
+      "Elon Must invents stuff",
       "Future is great and living standards are going to grow globally",
       "I dont know what to put here, so just adding this line"
     ]);
-    var deviceSize = MediaQuery.of(context).size;
+
     return ListView.builder(
       itemCount: 5,
-      itemBuilder: (context, index) => /*index == 0
-          ? new SizedBox(
-              child: new InstaStories(),
-              height: deviceSize.height * 0.15,
-            )
-          : */Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+      itemBuilder: (context, index) => Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          new Container(
+              padding: const EdgeInsets.all(12.0),
+              child: new Text(title[index],
+                  textAlign: TextAlign.left,
+                  style: TextStyle(color: Colors.black, fontSize: 16.0))),
+          new Row(children: <Widget>[
+            ClipOval(
+              child: Image.network(
+                'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg',
+                width: 60,
+                height: 60,
+                fit: BoxFit.cover,
+              ),
+            ),
+            new Column(
               children: <Widget>[
-                new Container (
-                  padding: const EdgeInsets.all(12.0),
-                  child: new Text (title[index], textAlign: TextAlign.left, style: TextStyle(color: Colors.black,
-                  fontSize: 16.0))
-                ),
-                Flexible(
-                  fit: FlexFit.loose,
-                  child: new CachedNetworkImage(
-                    // placeholder: (context, url) => CircularProgressIndicator(),
-                    imageUrl: list[index],
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                /*Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                new Text(title[index]),
+                new Text(title[index])
+              ],
+            )
+          ]),
+          Flexible(
+            fit: FlexFit.loose,
+            child: new CachedNetworkImage(
+              // placeholder: (context, url) => CircularProgressIndicator(),
+              imageUrl: list[index],
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    new Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
                         children: <Widget>[
                           new Icon(
-                            FontAwesomeIcons.heart,
+                            FontAwesomeIcons.thumbsUp,
+                            color: Colors.red,
                           ),
-                          new SizedBox(
-                            width: 16.0,
-                          ),
+                          new SizedBox(width: 2.0),
+                          new Container(
+                            // color: Colors.yellow,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 12.0, horizontal: 4.0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: new Text("Like"),
+                            ),
+                          )
+                        ]),
+                    new SizedBox(
+                      width: 16.0,
+                    ),
+                    new Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
                           new Icon(
-                            FontAwesomeIcons.comment,
+                            FontAwesomeIcons.commentAlt,
+                            color: Colors.red,
                           ),
-                          new SizedBox(
-                            width: 16.0,
-                          ),
-                          new Icon(FontAwesomeIcons.paperPlane),
-                        ],
-                      ),
-                      new Icon(FontAwesomeIcons.bookmark)
-                    ],
-                  ),
-                ),*/
-                new Container (
-                  padding: const EdgeInsets.all(12.0),
-                  child: new Column (
-                    children: <Widget>[
-                      new Text (listOfDescription[index], textAlign: TextAlign.left, style: TextStyle(color: Colors.black87))
-                    ],
-                  ),
+                          new SizedBox(width: 2.0),
+                          new Container(
+                            // color: Colors.yellow,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 4.0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: new Text("Like"),
+                            ),
+                          )
+                        ]),
+                    new SizedBox(
+                      width: 16.0,
+                    ),
+                    new Icon(FontAwesomeIcons.paperPlane),
+                  ],
                 ),
-                /*Padding(
+                new Icon(FontAwesomeIcons.bookmark)
+              ],
+            ),
+          ),
+          new Container(
+            padding: const EdgeInsets.all(12.0),
+            child: new Column(
+              children: <Widget>[
+                new Text(listOfDescription[index],
+                    textAlign: TextAlign.left,
+                    style: TextStyle(color: Colors.black87))
+              ],
+            ),
+          ),
+          /*Padding(
                   padding: const EdgeInsets.fromLTRB(16.0, 16.0, 0.0, 8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -108,20 +161,19 @@ class HomeList extends StatelessWidget {
                     ],
                   ),
                 ),*/
-                /*Padding(
+          /*Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child:
                       Text("1 Day Ago", style: TextStyle(color: Colors.grey)),
                 ),*/
-                Padding(
-                    padding: const EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 16.0),
-                  child: new Divider(
-                    height: 10.0,
-                    thickness: 2.0,
-                  )
-                ),
-              ],
-            ),
+          Padding(
+              padding: const EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 16.0),
+              child: new Divider(
+                height: 10.0,
+                thickness: 2.0,
+              )),
+        ],
+      ),
     );
   }
 }

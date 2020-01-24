@@ -20,7 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   story_view: ^0.10.0
-  font_awesome_flutter:
+  font_awesome_flutter: ^8.5.0
   cached_network_image: ^2.0.0-rc
 
   # The following adds the Cupertino Icons font to your application.
