@@ -1,24 +1,26 @@
-import 'package:flutter/cupertino.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeList extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    /*var list = new List.of([
-      "https://www.howtogeek.com/wp-content/uploads/2019/09/04c.gif",
-      "https://66.media.tumblr.com/ea6e5c19f89b4e279f2f20a4bb31bb42/tumblr_nfakifdir61twkrf5o1_1280.gif",
-      "https://creativepool.com/files/candidate/portfolio/full/1607338.gif",
-      "https://images-platform.99static.com/Xpj8jc_-csjIh9OIQCk7OqGDLfQ=/0x0:1080x1080/fit-in/900x675/99designs-contests-attachments/97/97958/attachment_97958792",
-      "https://www.howtogeek.com/wp-content/uploads/2019/09/04c.gif"
-    ]);*/
+    var profileImages = new List.of([
+      "https://media.gettyimages.com/photos/closeup-portrait-of-siberian-husky-relaxing-on-grassy-field-picture-id595607339?s=2048x2048",
+      "https://www.huskypuppiesinfo.com/wp-content/uploads/2018/03/Husky-Potty-Training.jpg",
+      "https://previews.123rf.com/images/sergeytikhomirov/sergeytikhomirov1907/sergeytikhomirov190700066/127619399-sable-siberian-husky-puppy-is-sitting-on-a-green-meadow-in-the-park-pet-animals-.jpg",
+      "https://cdn11.bigcommerce.com/s-oe2q4reh/images/stencil/2048x2048/products/738/1295/Siberian_Husky_Puppy__60707.1568507093.jpg?c=2",
+      "https://cdn1-www.dogtime.com/assets/uploads/gallery/siberian-husky-puppies/husky-1.jpg"
+    ]);
 
-    var list = new List.of([
+    var coverImages = new List.of([
       "https://media.gettyimages.com/photos/closeup-portrait-of-siberian-husky-relaxing-on-grassy-field-picture-id595607339?s=2048x2048",
-      "https://media.gettyimages.com/photos/closeup-portrait-of-siberian-husky-relaxing-on-grassy-field-picture-id595607339?s=2048x2048",
-      "https://media.gettyimages.com/photos/closeup-portrait-of-siberian-husky-relaxing-on-grassy-field-picture-id595607339?s=2048x2048",
-      "https://media.gettyimages.com/photos/closeup-portrait-of-siberian-husky-relaxing-on-grassy-field-picture-id595607339?s=2048x2048"
+      "https://cdn1-www.dogtime.com/assets/uploads/gallery/siberian-husky-puppies/husky-1.jpg",
+      "https://previews.123rf.com/images/sergeytikhomirov/sergeytikhomirov1907/sergeytikhomirov190700066/127619399-sable-siberian-husky-puppy-is-sitting-on-a-green-meadow-in-the-park-pet-animals-.jpg",
+      "https://cdn11.bigcommerce.com/s-oe2q4reh/images/stencil/2048x2048/products/738/1295/Siberian_Husky_Puppy__60707.1568507093.jpg?c=2",
+      "https://www.huskypuppiesinfo.com/wp-content/uploads/2018/03/Husky-Potty-Training.jpg"
     ]);
 
     var listOfDescription = new List.of([
@@ -44,32 +46,40 @@ class HomeList extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          new Container(
-              padding: const EdgeInsets.all(12.0),
-              child: new Text(title[index],
-                  textAlign: TextAlign.left,
-                  style: TextStyle(color: Colors.black, fontSize: 16.0))),
-          new Row(children: <Widget>[
-            ClipOval(
-              child: Image.network(
-                'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg',
-                width: 60,
-                height: 60,
-                fit: BoxFit.cover,
-              ),
-            ),
-            new Column(
+          new Row(
               children: <Widget>[
-                new Text(title[index]),
-                new Text(title[index])
-              ],
-            )
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 4.0),
+                  child: new Row(children: <Widget>[ClipOval(
+                    child: Image.network(
+                      coverImages[index],
+                      width: 60,
+                      height: 60,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12.0, horizontal: 12.0),
+                      child: new Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          new Text(title[index], style: new TextStyle(
+                              color: Colors.black87, fontSize: 20.0),),
+                          new Text(title[index], style: new TextStyle(
+                              color: Colors.grey, fontSize: 14.0),),
+                        ],
+                      ),
+                    ),
+                  ],),
+                ),
           ]),
           Flexible(
             fit: FlexFit.loose,
             child: new CachedNetworkImage(
               // placeholder: (context, url) => CircularProgressIndicator(),
-              imageUrl: list[index],
+              imageUrl: coverImages[index],
               fit: BoxFit.cover,
             ),
           ),
@@ -118,7 +128,7 @@ class HomeList extends StatelessWidget {
                                 vertical: 8.0, horizontal: 4.0),
                             child: Align(
                               alignment: Alignment.centerRight,
-                              child: new Text("Like"),
+                              child: new Text("Comment"),
                             ),
                           )
                         ]),
