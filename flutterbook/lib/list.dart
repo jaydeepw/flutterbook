@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeList extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     var profileImages = new List.of([
@@ -46,12 +45,15 @@ class HomeList extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          new Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 4.0),
-                  child: new Row(children: <Widget>[ClipOval(
+          Container(
+            height: 100,
+            child: new Row(children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+              ),
+              Container(
+                child: new Row(children: <Widget>[
+                  ClipOval(
                     child: Image.network(
                       coverImages[index],
                       width: 60,
@@ -59,22 +61,34 @@ class HomeList extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 12.0),
-                      child: new Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          new Text(title[index], style: new TextStyle(
-                              color: Colors.black87, fontSize: 20.0),),
-                          new Text(title[index], style: new TextStyle(
-                              color: Colors.grey, fontSize: 14.0),),
-                        ],
+                ]),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
+                child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    new Text(
+                      title[index],
+                      overflow: TextOverflow.ellipsis,
+                      style: new TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'Roboto',
+                        color: new Color(0xFF212121),
+                        fontWeight: FontWeight.bold,
                       ),
+                      /*style: new TextStyle(
+                              color: Colors.black87, fontSize: 20.0),*/
                     ),
-                  ],),
+                    new Text(
+                      title[index],
+                      overflow: TextOverflow.ellipsis,
+                      style: new TextStyle(color: Colors.grey, fontSize: 14.0),
+                    ),
+                  ],
                 ),
-          ]),
+              ),
+            ]),),
           Flexible(
             fit: FlexFit.loose,
             child: new CachedNetworkImage(
@@ -102,8 +116,7 @@ class HomeList extends StatelessWidget {
                           new SizedBox(width: 2.0),
                           new Container(
                             // color: Colors.yellow,
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 12.0, horizontal: 4.0),
+                            padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: new Text("Like"),
@@ -124,8 +137,7 @@ class HomeList extends StatelessWidget {
                           new SizedBox(width: 2.0),
                           new Container(
                             // color: Colors.yellow,
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 4.0),
+                            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: new Text("Comment"),
@@ -147,8 +159,7 @@ class HomeList extends StatelessWidget {
             child: new Column(
               children: <Widget>[
                 new Text(listOfDescription[index],
-                    textAlign: TextAlign.left,
-                    style: TextStyle(color: Colors.black87))
+                        textAlign: TextAlign.left, style: TextStyle(color: Colors.black87))
               ],
             ),
           ),

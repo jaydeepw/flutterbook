@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbook/body.dart';
+import 'package:flutterbook/utils/constants.dart';
 
 class Home extends StatelessWidget {
 
-  final topBar = new AppBar(
+  final topBar = AppBar(
     backgroundColor: new Color(0xfff8faf8),
     centerTitle: false,
     elevation: 1.0,
     title: SizedBox(
-      child: new Text("FlutterBook", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black45))),
+            child: new Text(Constants.APP_NAME,
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black45))),
+  );
+
+  final topBar2 = AppBar(
+    title: const Text(Constants.APP_NAME),
+    centerTitle: true, // this is all you need
+    /*leading: BackButton(
+      color: Colors.white,
+    ),*/
+    backgroundColor: Color(0xff474747),
   );
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: topBar,
+            appBar: topBar2,
         body: new Body(),
         bottomNavigationBar: new Container(
           color: Colors.white,
