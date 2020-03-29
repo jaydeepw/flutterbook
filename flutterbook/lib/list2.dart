@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbook/utils/constants.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeList2 extends StatefulWidget {
   static const String routeName = 'toprankings';
@@ -173,10 +174,70 @@ class HomeListState2 extends State<HomeList2> {
                                 'it like big descript of the card \n\n\n\n'
                                 'this is really long text. Trying to make\n',
                         style: getCardContentTextStyle()),
-            )
+            ),
+            getCardFooter()
         ]),
       ),
     );
+  }
+
+  Widget getCardFooter() {
+      return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+              new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                      Padding(padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0)),
+                      new Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                  new Icon(
+                                      FontAwesomeIcons.thumbsUp,
+                                      color: Colors.red,
+                                  ),
+                                  new SizedBox(width: 2.0),
+                                  new Container(
+                                      // color: Colors.yellow,
+                                      padding: const EdgeInsets.symmetric(
+                                              vertical: 12.0, horizontal: 4.0),
+                                      child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: new Text("Like"),
+                                      ),
+                                  )
+                              ]),
+                      new SizedBox(
+                          width: 16.0,
+                      ),
+                      new Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                  new Icon(
+                                      FontAwesomeIcons.commentAlt,
+                                      color: Colors.red,
+                                  ),
+                                  new SizedBox(width: 2.0),
+                                  new Container(
+                                      // color: Colors.yellow,
+                                      padding: const EdgeInsets.symmetric(
+                                              vertical: 8.0, horizontal: 4.0),
+                                      child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: new Text("Comment"),
+                                      ),
+                                  )
+                              ]),
+                      new SizedBox(
+                          width: 16.0,
+                      ),
+                      new Icon(FontAwesomeIcons.paperPlane),
+                  ],
+              ),
+          ],
+      );
   }
 
   getListTextStyle() {
