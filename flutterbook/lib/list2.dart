@@ -113,17 +113,17 @@ class HomeListState2 extends State<HomeList2> {
 
   Widget getCardHeader(index) {
     return Container(
-        padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(16.0),
         child: new Row(
           children: <Widget>[
             getUserAvatar(),
             Padding(padding: const EdgeInsets.all(8.0)),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
               Text(
-                listItems[index],
+                  listItems[Random().nextInt(listItems.length)],
                 style: getTitleTextStyle(),
               ),
-              Padding(padding: const EdgeInsets.all(4.0)),
+                Padding(padding: const EdgeInsets.all(2.0)),
               Row(
                 children: <Widget>[
                   Text(
@@ -135,12 +135,6 @@ class HomeListState2 extends State<HomeList2> {
                     style: getListTextStyle(),
                   ),
                     Icon(Icons.people, size: 24)
-                    /*CachedNetworkImage(
-                    imageUrl: urls[Random().nextInt(urls.length)],
-                    width: 20,
-                    height: 20,
-                    fit: BoxFit.cover,
-                  )*/
                 ],
               ),
             ]),
@@ -171,31 +165,35 @@ class HomeListState2 extends State<HomeList2> {
                 child: Text(
                         'A card that can be tapped'
                                 'this is really long text. Trying to make'
-                                'it like big descript of the card \n\n\n\n'
-                                'this is really long text. Trying to make\n',
+                                'it like big descript of the card \n\n\n'
+                                'this is really long text. Trying to make',
                         style: getCardContentTextStyle()),
             ),
+            Divider(thickness: 0.5),
             getCardFooter()
         ]),
       ),
     );
   }
 
+  TextStyle getFooterCtaFontStyle() {
+      return TextStyle(color: Color(0xFF6A6D70), fontSize: 20.0, fontWeight: FontWeight.w400);
+  }
+
   Widget getCardFooter() {
-      return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-              new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                      Padding(padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0)),
-                      new Row(
+      return Container(
+          height: 50,
+          child: Row(
+              children: <Widget>[
+                  Expanded(
+                      flex: 3,
+                      child: new Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
                                   new Icon(
                                       FontAwesomeIcons.thumbsUp,
-                                      color: Colors.red,
+                                      color: Color(0xFF65676B),
                                   ),
                                   new SizedBox(width: 2.0),
                                   new Container(
@@ -204,20 +202,20 @@ class HomeListState2 extends State<HomeList2> {
                                               vertical: 12.0, horizontal: 4.0),
                                       child: Align(
                                           alignment: Alignment.centerRight,
-                                          child: new Text("Like"),
+                                          child: new Text("Like", style: getFooterCtaFontStyle()),
                                       ),
                                   )
                               ]),
-                      new SizedBox(
-                          width: 16.0,
-                      ),
-                      new Row(
+                  ),
+                  Expanded(
+                      flex: 3,
+                      child: new Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
                                   new Icon(
                                       FontAwesomeIcons.commentAlt,
-                                      color: Colors.red,
+                                      color: Color(0xFF65676B),
                                   ),
                                   new SizedBox(width: 2.0),
                                   new Container(
@@ -226,17 +224,36 @@ class HomeListState2 extends State<HomeList2> {
                                               vertical: 8.0, horizontal: 4.0),
                                       child: Align(
                                           alignment: Alignment.centerRight,
-                                          child: new Text("Comment"),
+                                          child: new Text(
+                                                  "Comment", style: getFooterCtaFontStyle()),
                                       ),
                                   )
                               ]),
-                      new SizedBox(
-                          width: 16.0,
-                      ),
-                      new Icon(FontAwesomeIcons.paperPlane),
-                  ],
-              ),
-          ],
+                  ),
+                  Expanded(
+                      flex: 3,
+                      child: new Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                  new Icon(
+                                      FontAwesomeIcons.facebookMessenger,
+                                      color: Color(0xFF65676B),
+                                  ),
+                                  new SizedBox(width: 2.0),
+                                  new Container(
+                                      // color: Colors.yellow,
+                                      padding: const EdgeInsets.symmetric(
+                                              vertical: 12.0, horizontal: 4.0),
+                                      child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: new Text("Send", style: getFooterCtaFontStyle()),
+                                      ),
+                                  )
+                              ]),
+                  )
+              ],
+          ),
       );
   }
 
