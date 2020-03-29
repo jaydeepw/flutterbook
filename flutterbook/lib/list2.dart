@@ -97,9 +97,9 @@ class HomeListState2 extends State<HomeList2> {
         width: 60,
         height: 60,
         child: ClipOval(
-            child: new CachedNetworkImage(
+                child: CachedNetworkImage(
           placeholder: (context, url) => CircularProgressIndicator(),
-              imageUrl: urls[Random().nextInt(urls.length)],
+                  imageUrl: urls[Random().nextInt(urls.length)],
           width: 60,
           height: 60,
           fit: BoxFit.cover,
@@ -107,13 +107,6 @@ class HomeListState2 extends State<HomeList2> {
   }
 
   Widget buildBody(BuildContext context, int index) {
-    /*return ListView(
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      children: <Widget>[getCardHeader(index), getContentCard(),
-      Padding(padding: const EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0))],
-    );*/
-
     return getContentCard(index);
   }
 
@@ -127,12 +120,26 @@ class HomeListState2 extends State<HomeList2> {
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
               Text(
                 listItems[index],
-                style: getListTextStyle(),
+                style: getTitleTextStyle(),
               ),
               Padding(padding: const EdgeInsets.all(4.0)),
-              Text(
-                "Orders ${Random().nextInt(500)}",
-                style: getListTextStyle(),
+              Row(
+                children: <Widget>[
+                  Text(
+                    "${Random().nextInt(59)} mins",
+                    style: getListTextStyle(),
+                  ),
+                  Text(
+                    " • ",
+                    style: getListTextStyle(),
+                  ),
+                  CachedNetworkImage(
+                    imageUrl: urls[Random().nextInt(urls.length)],
+                    width: 20,
+                    height: 20,
+                    fit: BoxFit.cover,
+                  )
+                ],
               ),
             ]),
             Spacer(),
@@ -148,37 +155,44 @@ class HomeListState2 extends State<HomeList2> {
   }
 
   Widget getContentCard(index) {
-    return Container(
-            color: (index % 2 == 0) ? Color.fromRGBO(50, 50, 50, 1) : Color.fromRGBO(71, 71, 71, 1),
-            child: Card(
-              child: InkWell(
-                splashColor: Colors.blue.withAlpha(30),
-                onTap: () {
-                  print('Card tapped.');
-                },
-                child: ListView(
-                        scrollDirection: Axis.vertical, shrinkWrap: true, children: <Widget>[
-                  getCardHeader(index),
-                  Padding(padding: const EdgeInsets.all(10.0)),
-                  Container(
-                    height: 100,
+    return Card(
+      color: Color(0xFFFFFFFF),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(0),
+      ),
+      child: InkWell(
+        splashColor: Colors.red.withAlpha(30),
+        onTap: () {
+          print('Card tapped.');
+        },
+        child: Column(children: <Widget>[
+          getCardHeader(index),
+          Padding(padding: const EdgeInsets.all(10.0)),
+          Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
                     padding: const EdgeInsets.all(10.0),
                     child: Text('A card that can be tapped'),
-                  )
-                ]),
-              ),
-            ));
+                  )),
+        ]),
+      ),
+    );
   }
 
   getListTextStyle() {
     return TextStyle(/*color: getListSubTitleTextColor(), */ fontSize: 16.0);
   }
 
+  getTitleTextStyle() {
+    return TextStyle(color: Color(0xFF050505), fontSize: 22.0,
+            fontWeight: FontWeight.w700);
+  }
+
   getListSubTitleTextColor() {
     return Color.fromRGBO(219, 219, 219, 1);
   }
 
-  Widget registerScreen() {
+  Widget newsFeed() {
     return new ListView.builder(
         itemCount: listItems.length,
             itemBuilder: (BuildContext context, int index) =>
@@ -212,6 +226,6 @@ class HomeListState2 extends State<HomeList2> {
     return new Scaffold(
         key: _scaffoldKey,
         backgroundColor: Constants.DEFAULT_BG_COLOR,
-        body: isLoading ? loadingScreen() : registerScreen());
+            body: isLoading ? loadingScreen() : newsFeed());
   }
 }

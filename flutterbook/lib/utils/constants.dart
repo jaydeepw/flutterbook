@@ -14,7 +14,7 @@ class Constants {
   static const String BASE_URL = BASE_URL_PRODUCTION;
   static const String API_VERSION = '';
 
-  static const Color DEFAULT_BG_COLOR = Color(0xff474747);
+  static const Color DEFAULT_BG_COLOR = Color(0xffBDC1C9);
 
   static const String END_POINT_REQUEST_OTP = BASE_URL + API_VERSION + '/broker/send-otp';
 }
