@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterbook/list.dart';
+
+import 'list2.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class Body extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         // Expanded(flex: 1, child: new InstaStories()),
-        Flexible(child: HomeList())
+        Flexible(child: HomeList2())
       ],
     );
   }

@@ -59,7 +59,7 @@ class HomeListState2 extends State<HomeList2> {
 
   getItems() {
     for (int i = 0; i < 50; i++) {
-      listItems.add(getRandomImage2(names, names.length));
+      listItems.add(names[Random().nextInt(names.length)]);
     }
   }
 
@@ -67,7 +67,7 @@ class HomeListState2 extends State<HomeList2> {
     return urls[Random().nextInt(urls.length)];
   }
 
-  getRandomImage2(List<String> list, max) {
+  getRandom(List<String> list, max) {
     return list[Random().nextInt(max)];
   }
 
@@ -99,7 +99,7 @@ class HomeListState2 extends State<HomeList2> {
         child: ClipOval(
             child: new CachedNetworkImage(
           placeholder: (context, url) => CircularProgressIndicator(),
-          imageUrl: getRandomImage2(urls, urls.length),
+              imageUrl: urls[Random().nextInt(urls.length)],
           width: 60,
           height: 60,
           fit: BoxFit.cover,
@@ -107,26 +107,36 @@ class HomeListState2 extends State<HomeList2> {
   }
 
   Widget buildBody(BuildContext context, int index) {
-    return new Container(
-        color: (index % 2 == 0) ? Color.fromRGBO(50, 50, 50, 1) : Color.fromRGBO(71, 71, 71, 1),
+    /*return ListView(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      children: <Widget>[getCardHeader(index), getContentCard(),
+      Padding(padding: const EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0))],
+    );*/
+
+    return getContentCard(index);
+  }
+
+  Widget getCardHeader(index) {
+    return Container(
         padding: const EdgeInsets.all(10.0),
         child: new Row(
           children: <Widget>[
             getUserAvatar(),
             Padding(padding: const EdgeInsets.all(8.0)),
-            new Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-              new Text(
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+              Text(
                 listItems[index],
                 style: getListTextStyle(),
               ),
               Padding(padding: const EdgeInsets.all(4.0)),
-              new Text(
+              Text(
                 "Orders ${Random().nextInt(500)}",
                 style: getListTextStyle(),
               ),
             ]),
             Spacer(),
-            new Expanded(
+            Expanded(
               flex: 0,
               child: new Text(
                 index.toString(),
@@ -137,8 +147,31 @@ class HomeListState2 extends State<HomeList2> {
         ));
   }
 
+  Widget getContentCard(index) {
+    return Container(
+            color: (index % 2 == 0) ? Color.fromRGBO(50, 50, 50, 1) : Color.fromRGBO(71, 71, 71, 1),
+            child: Card(
+              child: InkWell(
+                splashColor: Colors.blue.withAlpha(30),
+                onTap: () {
+                  print('Card tapped.');
+                },
+                child: ListView(
+                        scrollDirection: Axis.vertical, shrinkWrap: true, children: <Widget>[
+                  getCardHeader(index),
+                  Padding(padding: const EdgeInsets.all(10.0)),
+                  Container(
+                    height: 100,
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text('A card that can be tapped'),
+                  )
+                ]),
+              ),
+            ));
+  }
+
   getListTextStyle() {
-    return TextStyle(color: getListSubTitleTextColor(), fontSize: 16.0);
+    return TextStyle(/*color: getListSubTitleTextColor(), */ fontSize: 16.0);
   }
 
   getListSubTitleTextColor() {
@@ -148,7 +181,12 @@ class HomeListState2 extends State<HomeList2> {
   Widget registerScreen() {
     return new ListView.builder(
         itemCount: listItems.length,
-        itemBuilder: (BuildContext context, int index) => buildBody(context, index));
+            itemBuilder: (BuildContext context, int index) =>
+            /*Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: ,
+                )*/
+            buildBody(context, index));
   }
 
   Widget loadingScreen() {
