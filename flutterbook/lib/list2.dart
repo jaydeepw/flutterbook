@@ -99,7 +99,7 @@ class HomeListState2 extends State<HomeList2> {
         child: ClipOval(
                 child: CachedNetworkImage(
           placeholder: (context, url) => CircularProgressIndicator(),
-                  imageUrl: urls[Random().nextInt(urls.length)],
+                    imageUrl: urls[Random().nextInt(urls.length)],
           width: 60,
           height: 60,
           fit: BoxFit.cover,
@@ -133,22 +133,20 @@ class HomeListState2 extends State<HomeList2> {
                     " • ",
                     style: getListTextStyle(),
                   ),
-                  CachedNetworkImage(
+                    Icon(Icons.people, size: 24)
+                    /*CachedNetworkImage(
                     imageUrl: urls[Random().nextInt(urls.length)],
                     width: 20,
                     height: 20,
                     fit: BoxFit.cover,
-                  )
+                  )*/
                 ],
               ),
             ]),
             Spacer(),
             Expanded(
               flex: 0,
-              child: new Text(
-                index.toString(),
-                style: getListTextStyle(),
-              ),
+                child: IconButton(icon: Icon(Icons.more_horiz)),
             ),
           ],
         ));
@@ -167,25 +165,30 @@ class HomeListState2 extends State<HomeList2> {
         },
         child: Column(children: <Widget>[
           getCardHeader(index),
-          Padding(padding: const EdgeInsets.all(10.0)),
-          Align(
-                  alignment: Alignment.topLeft,
-                  child: Container(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text('A card that can be tapped'),
-                  )),
+            Container(
+                padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                child: Text(
+                        'A card that can be tapped'
+                                'this is really long text. Trying to make'
+                                'it like big descript of the card \n\n\n\n'
+                                'this is really long text. Trying to make\n',
+                        style: getCardContentTextStyle()),
+            )
         ]),
       ),
     );
   }
 
   getListTextStyle() {
-    return TextStyle(/*color: getListSubTitleTextColor(), */ fontSize: 16.0);
+      return TextStyle(fontSize: 16.0);
+  }
+
+  getCardContentTextStyle() {
+      return TextStyle(color: Color(0xFF050505), fontSize: 22.0, fontWeight: FontWeight.w400);
   }
 
   getTitleTextStyle() {
-    return TextStyle(color: Color(0xFF050505), fontSize: 22.0,
-            fontWeight: FontWeight.w700);
+      return TextStyle(color: Color(0xFF050505), fontSize: 22.0, fontWeight: FontWeight.w700);
   }
 
   getListSubTitleTextColor() {
