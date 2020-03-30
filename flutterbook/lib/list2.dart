@@ -98,9 +98,9 @@ class HomeListState2 extends State<HomeList2> {
         width: 50,
         height: 50,
         child: ClipOval(
-                child: CachedNetworkImage(
+            child: CachedNetworkImage(
           placeholder: (context, url) => CircularProgressIndicator(),
-                  imageUrl: urls[Random().nextInt(urls.length)],
+          imageUrl: urls[Random().nextInt(urls.length)],
           width: 50,
           height: 50,
           fit: BoxFit.cover,
@@ -108,14 +108,12 @@ class HomeListState2 extends State<HomeList2> {
   }
 
   Widget buildBody(BuildContext context, int index) {
-    return SizedBox(width: double.maxFinite,
-    child: getContentCard(index));
-    // return getContentCard(index);
+    return getContentCard(index);
   }
 
   Widget getCardHeader(index) {
     return Container(
-            padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: new Row(
           children: <Widget>[
             getUserAvatar(),
@@ -151,10 +149,12 @@ class HomeListState2 extends State<HomeList2> {
 
   Widget getContentCard(index) {
     return Card(
+      margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 12.0),
       color: Color(0xFFFFFFFF),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(0),
       ),
+      elevation: 0,
       child: InkWell(
         splashColor: Colors.red.withAlpha(30),
         onTap: () {
@@ -176,71 +176,71 @@ class HomeListState2 extends State<HomeList2> {
 
   Widget getCardFooter() {
     return Container(
-      height: 50,
+      height: 48,
       child: Row(
         children: <Widget>[
           Expanded(
             flex: 3,
             child: new Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      new Icon(
-                        FontAwesomeIcons.thumbsUp,
-                        color: Color(0xFF65676B),
-                      ),
-                      new SizedBox(width: 2.0),
-                      new Container(
-                        // color: Colors.yellow,
-                        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: new Text("Like", style: getFooterCtaFontStyle()),
-                        ),
-                      )
-                    ]),
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  new Icon(
+                    FontAwesomeIcons.thumbsUp,
+                    color: Color(0xFF65676B),
+                  ),
+                  new SizedBox(width: 2.0),
+                  new Container(
+                    // color: Colors.yellow,
+                    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: new Text("Like", style: getFooterCtaFontStyle()),
+                    ),
+                  )
+                ]),
           ),
           Expanded(
             flex: 3,
             child: new Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      new Icon(
-                        FontAwesomeIcons.commentAlt,
-                        color: Color(0xFF65676B),
-                      ),
-                      new SizedBox(width: 2.0),
-                      new Container(
-                        // color: Colors.yellow,
-                        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: new Text("Comment", style: getFooterCtaFontStyle()),
-                        ),
-                      )
-                    ]),
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  new Icon(
+                    FontAwesomeIcons.commentAlt,
+                    color: Color(0xFF65676B),
+                  ),
+                  new SizedBox(width: 2.0),
+                  new Container(
+                    // color: Colors.yellow,
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: new Text("Comment", style: getFooterCtaFontStyle()),
+                    ),
+                  )
+                ]),
           ),
           Expanded(
             flex: 3,
             child: new Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      new Icon(
-                        FontAwesomeIcons.facebookMessenger,
-                        color: Color(0xFF65676B),
-                      ),
-                      new SizedBox(width: 2.0),
-                      new Container(
-                        // color: Colors.yellow,
-                        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: new Text("Send", style: getFooterCtaFontStyle()),
-                        ),
-                      )
-                    ]),
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  new Icon(
+                    FontAwesomeIcons.facebookMessenger,
+                    color: Color(0xFF65676B),
+                  ),
+                  new SizedBox(width: 2.0),
+                  new Container(
+                    // color: Colors.yellow,
+                    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: new Text("Send", style: getFooterCtaFontStyle()),
+                    ),
+                  )
+                ]),
           )
         ],
       ),
@@ -266,11 +266,7 @@ class HomeListState2 extends State<HomeList2> {
   Widget newsFeed() {
     return new ListView.builder(
         itemCount: listItems.length,
-            itemBuilder: (BuildContext context, int index) =>
-            /*Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: ,
-                )*/
+        itemBuilder: (BuildContext context, int index) =>
             buildBody(context, index));
   }
 
@@ -296,19 +292,19 @@ class HomeListState2 extends State<HomeList2> {
   Widget build(BuildContext context) {
     return new Scaffold(
         key: _scaffoldKey,
-        backgroundColor: Constants.DEFAULT_BG_COLOR,
-            body: isLoading ? loadingScreen() : newsFeed());
+        backgroundColor: Color(0xffBDC1C9),
+        body: isLoading ? loadingScreen() : newsFeed());
   }
 
   Widget getCardBody(index) {
     return Container(
       padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
       child: Text(
-              'A card that can be tapped'
-                      'this is really long text. Trying to make'
-                      'it like big descript of the card \n\n\n'
-                      'this is really long text. Trying to make',
-              style: getCardContentTextStyle()),
+          'A card that can be tapped'
+          'this is really long text. Trying to make'
+          'it like big descript of the card \n\n\n'
+          'this is really long text. Trying to make',
+          style: getCardContentTextStyle()),
     );
   }
 }
