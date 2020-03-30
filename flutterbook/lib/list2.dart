@@ -100,7 +100,7 @@ class HomeListState2 extends State<HomeList2> {
         child: ClipOval(
                 child: CachedNetworkImage(
           placeholder: (context, url) => CircularProgressIndicator(),
-                    imageUrl: urls[Random().nextInt(urls.length)],
+                  imageUrl: urls[Random().nextInt(urls.length)],
           width: 60,
           height: 60,
           fit: BoxFit.cover,
@@ -120,10 +120,10 @@ class HomeListState2 extends State<HomeList2> {
             Padding(padding: const EdgeInsets.all(8.0)),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
               Text(
-                  listItems[Random().nextInt(listItems.length)],
+                listItems[Random().nextInt(listItems.length)],
                 style: getTitleTextStyle(),
               ),
-                Padding(padding: const EdgeInsets.all(2.0)),
+              Padding(padding: const EdgeInsets.all(2.0)),
               Row(
                 children: <Widget>[
                   Text(
@@ -134,14 +134,14 @@ class HomeListState2 extends State<HomeList2> {
                     " • ",
                     style: getListTextStyle(),
                   ),
-                    Icon(Icons.people, size: 24)
+                  Icon(Icons.people, size: 24)
                 ],
               ),
             ]),
             Spacer(),
             Expanded(
               flex: 0,
-                child: IconButton(icon: Icon(Icons.more_horiz)),
+              child: IconButton(icon: Icon(Icons.more_horiz)),
             ),
           ],
         ));
@@ -160,113 +160,109 @@ class HomeListState2 extends State<HomeList2> {
         },
         child: Column(children: <Widget>[
           getCardHeader(index),
-            Container(
-                padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                child: Text(
-                        'A card that can be tapped'
-                                'this is really long text. Trying to make'
-                                'it like big descript of the card \n\n\n'
-                                'this is really long text. Trying to make',
-                        style: getCardContentTextStyle()),
-            ),
-            Divider(thickness: 0.5),
-            getCardFooter()
+          Container(
+            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+            child: Text(
+                    'A card that can be tapped'
+                            'this is really long text. Trying to make'
+                            'it like big descript of the card \n\n\n'
+                            'this is really long text. Trying to make',
+                    style: getCardContentTextStyle()),
+          ),
+          Divider(thickness: 0.5),
+          getCardFooter()
         ]),
       ),
     );
   }
 
   TextStyle getFooterCtaFontStyle() {
-      return TextStyle(color: Color(0xFF6A6D70), fontSize: 20.0, fontWeight: FontWeight.w400);
+    return TextStyle(color: Color(0xFF6A6D70), fontSize: 16.0, fontWeight: FontWeight.w400);
   }
 
   Widget getCardFooter() {
-      return Container(
-          height: 50,
-          child: Row(
-              children: <Widget>[
-                  Expanded(
-                      flex: 3,
-                      child: new Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                  new Icon(
-                                      FontAwesomeIcons.thumbsUp,
-                                      color: Color(0xFF65676B),
-                                  ),
-                                  new SizedBox(width: 2.0),
-                                  new Container(
-                                      // color: Colors.yellow,
-                                      padding: const EdgeInsets.symmetric(
-                                              vertical: 12.0, horizontal: 4.0),
-                                      child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: new Text("Like", style: getFooterCtaFontStyle()),
-                                      ),
-                                  )
-                              ]),
-                  ),
-                  Expanded(
-                      flex: 3,
-                      child: new Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                  new Icon(
-                                      FontAwesomeIcons.commentAlt,
-                                      color: Color(0xFF65676B),
-                                  ),
-                                  new SizedBox(width: 2.0),
-                                  new Container(
-                                      // color: Colors.yellow,
-                                      padding: const EdgeInsets.symmetric(
-                                              vertical: 8.0, horizontal: 4.0),
-                                      child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: new Text(
-                                                  "Comment", style: getFooterCtaFontStyle()),
-                                      ),
-                                  )
-                              ]),
-                  ),
-                  Expanded(
-                      flex: 3,
-                      child: new Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                  new Icon(
-                                      FontAwesomeIcons.facebookMessenger,
-                                      color: Color(0xFF65676B),
-                                  ),
-                                  new SizedBox(width: 2.0),
-                                  new Container(
-                                      // color: Colors.yellow,
-                                      padding: const EdgeInsets.symmetric(
-                                              vertical: 12.0, horizontal: 4.0),
-                                      child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: new Text("Send", style: getFooterCtaFontStyle()),
-                                      ),
-                                  )
-                              ]),
-                  )
-              ],
+    return Container(
+      height: 50,
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            flex: 3,
+            child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      new Icon(
+                        FontAwesomeIcons.thumbsUp,
+                        color: Color(0xFF65676B),
+                      ),
+                      new SizedBox(width: 2.0),
+                      new Container(
+                        // color: Colors.yellow,
+                        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: new Text("Like", style: getFooterCtaFontStyle()),
+                        ),
+                      )
+                    ]),
           ),
-      );
+          Expanded(
+            flex: 3,
+            child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      new Icon(
+                        FontAwesomeIcons.commentAlt,
+                        color: Color(0xFF65676B),
+                      ),
+                      new SizedBox(width: 2.0),
+                      new Container(
+                        // color: Colors.yellow,
+                        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: new Text("Comment", style: getFooterCtaFontStyle()),
+                        ),
+                      )
+                    ]),
+          ),
+          Expanded(
+            flex: 3,
+            child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      new Icon(
+                        FontAwesomeIcons.facebookMessenger,
+                        color: Color(0xFF65676B),
+                      ),
+                      new SizedBox(width: 2.0),
+                      new Container(
+                        // color: Colors.yellow,
+                        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: new Text("Send", style: getFooterCtaFontStyle()),
+                        ),
+                      )
+                    ]),
+          )
+        ],
+      ),
+    );
   }
 
   getListTextStyle() {
-      return TextStyle(fontSize: 16.0);
+    return TextStyle(fontSize: 12.0);
   }
 
   getCardContentTextStyle() {
-      return TextStyle(color: Color(0xFF050505), fontSize: 22.0, fontWeight: FontWeight.w400);
+    return TextStyle(color: Color(0xFF050505), fontSize: 18.0, fontWeight: FontWeight.w400);
   }
 
   getTitleTextStyle() {
-      return TextStyle(color: Color(0xFF050505), fontSize: 22.0, fontWeight: FontWeight.w700);
+    return TextStyle(color: Color(0xFF050505), fontSize: 18.0, fontWeight: FontWeight.w700);
   }
 
   getListSubTitleTextColor() {
@@ -295,7 +291,7 @@ class HomeListState2 extends State<HomeList2> {
               padding: const EdgeInsets.all(8.0),
               child: new Text(
                 'Please Wait',
-                style: new TextStyle(color: Colors.grey.shade500, fontSize: 16.0),
+                style: new TextStyle(color: Colors.grey.shade500, fontSize: 12.0),
               ),
             )
           ],

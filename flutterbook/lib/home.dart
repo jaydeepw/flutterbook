@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbook/body.dart';
 import 'package:flutterbook/utils/constants.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatelessWidget {
-
   final topBar = AppBar(
     backgroundColor: new Color(0xfff8faf8),
     centerTitle: false,
@@ -14,12 +14,38 @@ class Home extends StatelessWidget {
   );
 
   final topBar2 = AppBar(
-    title: const Text(Constants.APP_NAME),
-    centerTitle: true, // this is all you need
+      title: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(Constants.APP_NAME,
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF4267B2)))),
+      centerTitle: true,
+      // this is all you need
     /*leading: BackButton(
       color: Colors.white,
     ),*/
-    backgroundColor: Color(0xff474747),
+      elevation: 0,
+      backgroundColor: Color(0xFFFFFFFF),
+      actions: <Widget>[
+          Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                      onTap: () {},
+                      child: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                          size: 26.0,
+                      ),
+                  )),
+          Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                      onTap: () {},
+                      child: Icon(
+                          FontAwesomeIcons.facebookMessenger,
+                          color: Colors.black,
+                      ),
+                  )),
+      ],
   );
 
   @override
