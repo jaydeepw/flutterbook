@@ -95,20 +95,22 @@ class HomeListState2 extends State<HomeList2> {
 
   getUserAvatar() {
     return new Container(
-        width: 60,
-        height: 60,
+        width: 50,
+        height: 50,
         child: ClipOval(
                 child: CachedNetworkImage(
           placeholder: (context, url) => CircularProgressIndicator(),
                   imageUrl: urls[Random().nextInt(urls.length)],
-          width: 60,
-          height: 60,
+          width: 50,
+          height: 50,
           fit: BoxFit.cover,
         )));
   }
 
   Widget buildBody(BuildContext context, int index) {
-    return getContentCard(index);
+    return SizedBox(width: double.maxFinite,
+    child: getContentCard(index));
+    // return getContentCard(index);
   }
 
   Widget getCardHeader(index) {
@@ -160,15 +162,7 @@ class HomeListState2 extends State<HomeList2> {
         },
         child: Column(children: <Widget>[
           getCardHeader(index),
-          Container(
-            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            child: Text(
-                    'A card that can be tapped'
-                            'this is really long text. Trying to make'
-                            'it like big descript of the card \n\n\n'
-                            'this is really long text. Trying to make',
-                    style: getCardContentTextStyle()),
-          ),
+          getCardBody(index),
           Divider(thickness: 0.5),
           getCardFooter()
         ]),
@@ -304,5 +298,17 @@ class HomeListState2 extends State<HomeList2> {
         key: _scaffoldKey,
         backgroundColor: Constants.DEFAULT_BG_COLOR,
             body: isLoading ? loadingScreen() : newsFeed());
+  }
+
+  Widget getCardBody(index) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+      child: Text(
+              'A card that can be tapped'
+                      'this is really long text. Trying to make'
+                      'it like big descript of the card \n\n\n'
+                      'this is really long text. Trying to make',
+              style: getCardContentTextStyle()),
+    );
   }
 }
